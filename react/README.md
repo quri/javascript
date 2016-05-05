@@ -102,6 +102,30 @@
     import Footer from './Footer';
     ```
 
+  - **Selector Naming**: Selector function names should be appended with `Selector`. Prepending with `get` is oftentimes redundant and unnecessary:
+
+    ```jsx
+    // bad
+    const getTotal = createSelector(
+      [state => state.values.value1, state => state.values.value2],
+      (value1, value2) => value1 + value2
+    ) 
+        
+    // bad
+    const getTotalSelector = createSelector(
+      [state => state.values.value1, state => state.values.value2],
+      (value1, value2) => value1 + value2
+    )    
+    
+    // good
+    const totalSelector = createSelector(
+      [state => state.values.value1, state => state.values.value2],
+      (value1, value2) => value1 + value2
+    ) 
+    
+    
+    ```
+
 ## Declaration
 
   - Do not use `displayName` for naming components. Instead, name the component by reference.
