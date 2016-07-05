@@ -12,6 +12,7 @@
   1. [Quotes](#quotes)
   1. [Spacing](#spacing)
   1. [Props](#props)
+  1. [Refs](#refs)
   1. [Parentheses](#parentheses)
   1. [Tags](#tags)
   1. [Methods](#methods)
@@ -109,21 +110,21 @@
     const getTotal = createSelector(
       [state => state.values.value1, state => state.values.value2],
       (value1, value2) => value1 + value2
-    ) 
-        
+    )
+
     // bad
     const getTotalSelector = createSelector(
       [state => state.values.value1, state => state.values.value2],
       (value1, value2) => value1 + value2
-    )    
-    
+    )
+
     // good
     const totalSelector = createSelector(
       [state => state.values.value1, state => state.values.value2],
       (value1, value2) => value1 + value2
-    ) 
-    
-    
+    )
+
+
     ```
 
 ## Declaration
@@ -248,6 +249,95 @@
     // good
     <Foo
       hidden
+    />
+    ```
+
+  - Always include an `alt` prop on `<img>` tags. If the image is presentational, `alt` can be an empty string or the `<img>` must have `role="presentation"`. eslint: [`jsx-a11y/img-has-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
+
+    ```jsx
+    // bad
+    <img src="hello.jpg" />
+
+    // good
+    <img src="hello.jpg" alt="Me waving hello" />
+
+    // good
+    <img src="hello.jpg" alt="" />
+
+    // good
+    <img src="hello.jpg" role="presentation" />
+    ```
+
+  - Do not use words like "image", "photo", or "picture" in `<img>` `alt` props. eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
+
+  > Why? Screenreaders already announce `img` elements as images, so there is no need to include this information in the alt text.
+
+    ```jsx
+    // bad
+    <img src="hello.jpg" alt="Picture of me waving hello" />
+
+    // good
+    <img src="hello.jpg" alt="Me waving hello" />
+    ```
+
+  - Use only valid, non-abstract [ARIA roles](https://www.w3.org/TR/wai-aria/roles#role_definitions). eslint: [`jsx-a11y/aria-role`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
+
+    ```jsx
+    // bad - not an ARIA role
+    <div role="datepicker" />
+
+    // bad - abstract ARIA role
+    <div role="range" />
+
+    // good
+    <div role="button" />
+    ```
+
+  - Do not use `accessKey` on elements. eslint: [`jsx-a11y/no-access-key`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md)
+
+  > Why? Inconsistencies between keyboard shortcuts and keyboard commands used by people using screenreaders and keyboards complicate accessibility.
+
+  ```jsx
+  // bad
+  <div accessKey="h" />
+
+  // good
+  <div />
+  ```
+
+  - Avoid using an array index as `key` prop, prefer a unique ID. ([why?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
+
+  ```jsx
+  // bad
+  {todos.map((todo, index) =>
+    <Todo
+      {...todo}
+      key={index}
+    />
+  )}
+
+  // good
+  {todos.map(todo => (
+    <Todo
+      {...todo}
+      key={todo.id}
+    />
+  ))}
+  ```
+
+## Refs
+
+  - Always use ref callbacks. eslint: [`react/no-string-refs`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md)
+
+    ```jsx
+    // bad
+    <Foo
+      ref="myRef"
+    />
+
+    // good
+    <Foo
+      ref={(ref) => this.myRef = ref}
     />
     ```
 
@@ -463,6 +553,14 @@
   > Why? [`isMounted` is an anti-pattern][anti-pattern], is not available when using ES6 classes, and is on its way to being officially deprecated.
 
   [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+
+## Translation
+
+  This JSX/React style guide is also available in other languages:
+
+  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
+  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [pietraszekl/javascript](https://github.com/pietraszekl/javascript/tree/master/react)
+  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [apple77y/javascript](https://github.com/apple77y/javascript/tree/master/react)
 
 **[⬆ back to top](#table-of-contents)**
 

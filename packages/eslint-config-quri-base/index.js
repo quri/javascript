@@ -3,6 +3,7 @@ module.exports = {
     './legacy',
     './rules/babel',
     './rules/es6',
+    './rules/imports',
   ].map(require.resolve),
   parserOptions: {
     ecmaVersion: 7,

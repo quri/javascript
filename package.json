@@ -1,11 +1,11 @@
 {
   "name": "quri-style",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A very reasonable approach to JavaScript.",
   "scripts": {
-	"preinstall": "npm run install:config && npm run install:config:base",
-    "install:config": "cd packages/eslint-config-quri && npm install",
-    "install:config:base": "cd packages/eslint-config-quri-base && npm install",
+    "preinstall": "npm run install:config && npm run install:config:base",
+    "install:config": "cd packages/eslint-config-quri && npm prune && npm install",
+    "install:config:base": "cd packages/eslint-config-quri-base && npm prune && npm install",
     "test": "npm run --silent test:config && npm run --silent test:config:base",
     "test:config": "cd packages/eslint-config-quri; npm test",
     "test:config:base": "cd packages/eslint-config-quri-base; npm test"

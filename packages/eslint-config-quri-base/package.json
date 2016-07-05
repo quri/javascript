@@ -1,13 +1,15 @@
 {
   "name": "eslint-config-quri-base",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Quri's base JS ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "tests-only": "babel-tape-runner ./test/test-*.js",
-    "pretest": "eslint-find-rules --unused",
-    "test": "npm run --silent lint && npm run --silent tests-only"
+    "prepublish": "not-in-install && (eslint-find-rules --unused && npm test) || in-install",
+    "pretest": "npm run --silent lint",
+    "test": "npm run --silent tests-only",
+    "travis": "npm run --silent test"
   },
   "repository": {
     "type": "git",
@@ -52,8 +54,8 @@
     "tape": "^4.5.1"
   },
   "peerDependencies": {
-    "eslint": "^2.9.0",
-    "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-import": "^1.6.1"
+    "eslint": "^3.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.10.2"
   }
 }
