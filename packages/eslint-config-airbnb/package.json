@@ -1,24 +1,25 @@
 {
-  "name": "eslint-config-quri-base",
-  "version": "2.0.1",
-  "description": "Quri's base JS ESLint config, following our styleguide",
+  "name": "eslint-config-airbnb",
+  "version": "12.0.0",
+  "description": "Airbnb's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "tests-only": "babel-tape-runner ./test/test-*.js",
+    "prepublish": "(in-install || eslint-find-rules --unused) && (not-in-publish || npm test) && safe-publish-latest",
     "pretest": "npm run --silent lint",
     "test": "npm run --silent tests-only",
-    "travis": "npm run --silent test"
+    "travis": "cd ../eslint-config-airbnb-base && npm install && npm link && cd - && npm link eslint-config-airbnb-base && npm run --silent test ; npm unlink eslint-config-airbnb-base >/dev/null &"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/quri/javascript"
+    "url": "https://github.com/airbnb/javascript"
   },
   "keywords": [
     "eslint",
     "eslintconfig",
     "config",
-    "quri",
+    "airbnb",
     "javascript",
     "styleguide"
   ],
@@ -40,22 +41,30 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/quri/javascript/issues"
+    "url": "https://github.com/airbnb/javascript/issues"
   },
-  "homepage": "https://github.com/quri/javascript",
+  "homepage": "https://github.com/airbnb/javascript",
+  "dependencies": {
+    "eslint-config-airbnb-base": "^9.0.0"
+  },
   "devDependencies": {
     "babel-preset-airbnb": "^2.1.1",
     "babel-tape-runner": "^2.0.1",
     "eslint": "^3.8.1",
     "eslint-find-rules": "^1.14.0",
     "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
     "in-publish": "^2.0.0",
+    "react": ">= 0.13.0",
     "safe-publish-latest": "^1.1.1",
     "tape": "^4.6.2"
   },
   "peerDependencies": {
     "eslint": "^3.8.1",
-    "eslint-plugin-import": "^2.0.1"
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-react": "^6.4.1"
   },
   "engines": {
     "node": ">= 4"

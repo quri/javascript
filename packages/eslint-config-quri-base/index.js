@@ -6,10 +6,13 @@ module.exports = {
     './rules/imports',
   ].map(require.resolve),
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: 2017,
     sourceType: 'module',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+    },
   },
   rules: {
-    strict: 2,
-  }
+    strict: 'error',
+  },
 };

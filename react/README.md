@@ -102,6 +102,44 @@
     // good
     import Footer from './Footer';
     ```
+  - **Higher-order Component Naming**: Use a composite of the higher-order component's name and the passed-in component's name as the `displayName` on the generated component. For example, the higher-order component `withFoo()`, when passed a component `Bar` should produce a component with a `displayName` of `withFoo(Bar)`.
+
+  > Why? A component's `displayName` may be used by developer tools or in error messages, and having a value that clearly expresses this relationship helps people understand what is happening.
+
+    ```jsx
+    // bad
+    export default function withFoo(WrappedComponent) {
+      return function WithFoo(props) {
+        return <WrappedComponent {...props} foo />;
+      }
+    }
+
+    // good
+    export default function withFoo(WrappedComponent) {
+      function WithFoo(props) {
+        return <WrappedComponent {...props} foo />;
+      }
+
+      const wrappedComponentName = WrappedComponent.displayName
+        || WrappedComponent.name
+        || 'Component';
+
+      WithFoo.displayName = `withFoo(${wrappedComponentName})`;
+      return WithFoo;
+    }
+    ```
+
+  - **Props Naming**: Avoid using DOM component prop names for different purposes.
+
+  > Why? People expect props like `style` and `className` to mean one specific thing. Varying this API for a subset of your app makes the code less readable and less maintainable, and may cause bugs.
+
+    ```jsx
+    // bad
+    <MyComponent style="fancy" />
+
+    // good
+    <MyComponent variant="fancy" />
+    ```
 
   - **Selector Naming**: Selector function names should be appended with `Selector`. Prepending with `get` is oftentimes redundant and unnecessary:
 
@@ -174,7 +212,7 @@
 
   - Always use double quotes (`"`).
 
-  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
+  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make contractions like `"don't"` easier to type.
   > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
 
     ```jsx
@@ -193,7 +231,7 @@
 
 ## Spacing
 
-  - Always include a single space in your self-closing tag.
+  - Always include a single space in your self-closing tag. eslint: [`no-multi-spaces`](http://eslint.org/docs/rules/no-multi-spaces), [`react/jsx-space-before-closing`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-space-before-closing.md)
 
     ```jsx
     // bad
@@ -337,7 +375,7 @@
 
     // good
     <Foo
-      ref={(ref) => this.myRef = ref}
+      ref={ref => { this.myRef = ref; }}
     />
     ```
 
@@ -450,6 +488,7 @@
     ```
 
   - Do not use underscore prefix for internal methods of a React component.
+  > Why? Underscore prefixes are sometimes used as a convention in other languages to denote privacy. But, unlike those languages, there is no native support for privacy in JavaScript, everything is public. Regardless of your intentions, adding underscore prefixes to your properties does not actually make them private, and any property (underscore-prefixed or not) should be treated as being public. See issues [#1024](https://github.com/airbnb/javascript/issues/1024), and [#490](https://github.com/airbnb/javascript/issues/490) for a more in-depth discussion.
 
     ```jsx
     // bad
@@ -471,7 +510,7 @@
     }
     ```
 
-  - Be sure to return a value in your `render` methods. eslint: [`require-render-return`](https://github.com/yannickcr/eslint-plugin-react/pull/502)
+  - Be sure to return a value in your `render` methods. eslint: [`react/require-render-return`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md)
 
     ```jsx
     // bad
@@ -561,6 +600,8 @@
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
   - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [pietraszekl/javascript](https://github.com/pietraszekl/javascript/tree/master/react)
   - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [apple77y/javascript](https://github.com/apple77y/javascript/tree/master/react)
+  - ![Br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese**: [ronal2do/javascript](https://github.com/ronal2do/airbnb-react-styleguide)
+  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javascript-style-guide](https://github.com/mitsuruog/javascript-style-guide/tree/master/react)
 
 **[⬆ back to top](#table-of-contents)**
 
