@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-quri",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Quri's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,6 @@
     },
     "peerDependencies": {
     "eslint": "^3.8.1",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-react": "^6.4.1"
     },
