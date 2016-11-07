@@ -1,7 +1,7 @@
 {
-  "name": "eslint-config-airbnb",
+  "name": "eslint-config-quri",
   "version": "12.0.0",
-  "description": "Airbnb's ESLint config, following our styleguide",
+  "description": "Quri's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -9,17 +9,17 @@
     "prepublish": "(in-install || eslint-find-rules --unused) && (not-in-publish || npm test) && safe-publish-latest",
     "pretest": "npm run --silent lint",
     "test": "npm run --silent tests-only",
-    "travis": "cd ../eslint-config-airbnb-base && npm install && npm link && cd - && npm link eslint-config-airbnb-base && npm run --silent test ; npm unlink eslint-config-airbnb-base >/dev/null &"
+    "travis": "cd ../eslint-config-quri-base && npm install && npm link && cd - && npm link eslint-config-quri-base && npm run --silent test ; npm unlink eslint-config-quri-base >/dev/null &"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/airbnb/javascript"
+    "url": "https://github.com/quri/javascript"
   },
   "keywords": [
     "eslint",
     "eslintconfig",
     "config",
-    "airbnb",
+    "quri",
     "javascript",
     "styleguide"
   ],
@@ -41,14 +41,14 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/airbnb/javascript/issues"
+    "url": "https://github.com/quri/javascript/issues"
   },
-  "homepage": "https://github.com/airbnb/javascript",
+  "homepage": "https://github.com/quri/javascript",
   "dependencies": {
-    "eslint-config-airbnb-base": "^9.0.0"
+    "eslint-config-quri-base": "^9.0.0"
   },
   "devDependencies": {
-    "babel-preset-airbnb": "^2.1.1",
+    "babel-preset-quri": "^2.1.1",
     "babel-tape-runner": "^2.0.1",
     "eslint": "^3.8.1",
     "eslint-find-rules": "^1.14.0",
