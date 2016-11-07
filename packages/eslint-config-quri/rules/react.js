@@ -259,10 +259,6 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md
     'react/jsx-no-target-blank': 'error',
 
-    // only .jsx files may have JSX
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx'] }],
-
     // prevent accidental JS comments from being injected into JSX as text
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md
     'react/jsx-no-comment-textnodes': 'error',
