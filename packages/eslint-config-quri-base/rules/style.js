@@ -35,7 +35,9 @@ module.exports = {
     // requires function names to match the name of the variable or property to which they are
     // assigned
     // http://eslint.org/docs/rules/func-name-matching
-    'func-name-matching': ['off', { includeCommonJSModuleExports: false }],
+    'func-name-matching': ['off', 'always', {
+      includeCommonJSModuleExports: false
+    }],
 
     // require function expressions to have a name
     // http://eslint.org/docs/rules/func-names
@@ -59,7 +61,23 @@ module.exports = {
 
     // this option sets a specific tab width for your code
     // http://eslint.org/docs/rules/indent
-    indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    indent: ['error', 2, {
+      SwitchCase: 1,
+      VariableDeclarator: 1,
+      outerIIFEBody: 1,
+      // MemberExpression: null,
+      // CallExpression: {
+        // parameters: null,
+      // },
+      FunctionDeclaration: {
+        parameters: 1,
+        body: 1
+      },
+      FunctionExpression: {
+        parameters: 1,
+        body: 1
+      }
+    }],
 
     // specify whether double or single quotes should be used in JSX attributes
     // http://eslint.org/docs/rules/jsx-quotes
@@ -110,6 +128,7 @@ module.exports = {
     'max-len': [1, 100, 2, {
       ignoreUrls: true,
       ignoreComments: false,
+      ignoreRegExpLiterals: true,
       ignoreStrings: true,
       ignoreTemplateLiterals: true,
     }],
@@ -335,9 +354,17 @@ module.exports = {
     }],
 
     // require or disallow a space immediately following the // or /* in a comment
-    'spaced-comment': [2, 'always', {
-      exceptions: ['-', '+'],
-      markers: ['=', '!']           // space here to support sprockets directives
+    // http://eslint.org/docs/rules/spaced-comment
+    'spaced-comment': ['error', 'always', {
+      line: {
+        exceptions: ['-', '+'],
+        markers: ['=', '!'], // space here to support sprockets directives
+      },
+      block: {
+        exceptions: ['-', '+'],
+        markers: ['=', '!'], // space here to support sprockets directives
+        balanced: false,
+      }
     }],
     // require or disallow the Unicode Byte Order Mark
     // http://eslint.org/docs/rules/unicode-bom
