@@ -1,6 +1,6 @@
 {
   "name": "quri-style",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A very reasonable approach to JavaScript.",
   "scripts": {
     "preinstall": "npm run install:config && npm run install:config:base",
