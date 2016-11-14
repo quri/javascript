@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-quri",
-  "version": "12.0.0",
+  "version": "4.0.0",
   "description": "Quri's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/quri/javascript",
   "dependencies": {
-    "eslint-config-quri-base": "^9.0.0"
+    "eslint-config-quri-base": "^3.0.0"
   },
   "devDependencies": {
     "babel-tape-runner": "^2.0.1",

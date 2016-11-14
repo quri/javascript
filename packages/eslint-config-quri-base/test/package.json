@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-quri-base",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Quri's base JS ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -44,7 +44,6 @@
   },
   "homepage": "https://github.com/quri/javascript",
   "devDependencies": {
-    "babel-preset-airbnb": "^2.1.1",
     "babel-tape-runner": "^2.0.1",
     "eslint": "^3.8.1",
     "eslint-find-rules": "^1.14.0",

@@ -93,7 +93,7 @@ module.exports = {
 
     // disallow non-import statements appearing before import statements
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md
-    'import/first': ['error', 'absolute-first'],
+    'import/first': ['warn', 'absolute-first'],
 
     // disallow non-import statements appearing before import statements
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md
@@ -114,6 +114,7 @@ module.exports = {
     'import/extensions': ['error', 'always', {
       js: 'never',
       jsx: 'never',
+      coffee: 'never',
     }],
 
     // Enforce a convention in module import order
