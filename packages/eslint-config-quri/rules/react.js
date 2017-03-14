@@ -293,6 +293,10 @@ module.exports = {
       skipShapeProps: true,
     }],
 
+    // Warns when an array index is being used as key on a render mapping
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+    'react/no-array-index-key': 'warn',
+
     // Require style prop value be an object or var
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
     'react/style-prop-object': 'error',
