@@ -50,7 +50,8 @@ module.exports = {
 
     // disallow importing from the same path more than once
     // http://eslint.org/docs/rules/no-duplicate-imports
-    'no-duplicate-imports': 'error',
+    // replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+    'no-duplicate-imports': 'off',
 
     // disallow symbol constructor
     // http://eslint.org/docs/rules/no-new-symbol
@@ -102,6 +103,16 @@ module.exports = {
     'prefer-const': ['error', {
       destructuring: 'any',
       ignoreReadBeforeAssign: true,
+    }],
+
+    // Prefer destructuring from arrays and objects
+    // http://eslint.org/docs/rules/prefer-destructuring
+    // TODO: enable
+    'prefer-destructuring': ['off', {
+      array: true,
+      object: true,
+    }, {
+      enforceForRenamedProperties: false,
     }],
 
     // disallow parseInt() in favor of binary, octal, and hexadecimal literals

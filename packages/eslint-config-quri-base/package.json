@@ -1,9 +1,10 @@
 {
   "name": "eslint-config-quri-base",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Quri's base JS ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
+    "prelint": "editorconfig-tools check * rules/* test/*",
     "lint": "eslint .",
     "tests-only": "babel-tape-runner ./test/test-*.js",
     "pretest": "npm run --silent lint",
@@ -44,17 +45,17 @@
   },
   "homepage": "https://github.com/quri/javascript",
   "devDependencies": {
-    "eslint": "^3.9.1",
+    "eslint": "^3.19.0",
     "eslint-find-rules": "^1.14.3",
-    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-import": "^2.2.0",
     "in-publish": "^2.0.0",
     "safe-publish-latest": "^1.1.1",
-    "tape": "^4.6.2"
+    "tape": "^4.6.3"
   },
   "peerDependencies": {
-    "eslint": "^3.9.1",
+    "eslint": "^3.19.0",
     "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^2.1.0"
+    "eslint-plugin-import": "^2.2.0"
   },
   "engines": {
     "node": ">= 4"
