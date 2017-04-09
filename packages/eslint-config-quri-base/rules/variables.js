@@ -17,16 +17,16 @@ module.exports = {
     'no-restricted-globals': 'off',
 
     // disallow declaration of variables already declared in the outer scope
-    'no-shadow': 1,
-
-    // disallow use of undefined when initializing variables
-    'no-undef-init': 0,
+    'no-shadow': 'warn',
 
     // disallow shadowing of names such as arguments
     'no-shadow-restricted-names': 'error',
 
     // disallow use of undeclared variables unless mentioned in a /*global */ block
     'no-undef': 'error',
+
+    // disallow use of undefined when initializing variables
+    'no-undef-init': 'off',
 
     // disallow use of undefined variable
     // http://eslint.org/docs/rules/no-undefined

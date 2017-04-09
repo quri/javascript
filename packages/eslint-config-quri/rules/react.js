@@ -83,7 +83,7 @@ module.exports = {
 
     // Prevent duplicate props in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
-    'react/jsx-no-duplicate-props': [2, { ignoreCase: true }],
+    'react/jsx-no-duplicate-props': ['error', { ignoreCase: true }],
 
     // Prevent usage of unwrapped JSX strings
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md
@@ -116,6 +116,9 @@ module.exports = {
     'react/jsx-sort-props': [1, {
       ignoreCase: true,
       callbacksLast: false,
+      shorthandFirst: false,
+      shorthandLast: false,
+      noSortAlphabetically: false,
     }],
 
     // Prevent React to be incorrectly marked as unused
@@ -136,27 +139,27 @@ module.exports = {
 
     // Prevent usage of setState in componentDidMount
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md
-    'react/no-did-mount-set-state': 2,
+    'react/no-did-mount-set-state': ['error'],
 
     // Prevent usage of setState in componentDidUpdate
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-update-set-state.md
-    'react/no-did-update-set-state': 2,
+    'react/no-did-update-set-state': ['error'],
 
     // Prevent direct mutation of this.state
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
-    'react/no-direct-mutation-state': 2,
+    'react/no-direct-mutation-state': 'error',
 
     // Prevent usage of isMounted
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md
-    'react/no-is-mounted': 1,
+    'react/no-is-mounted': 'warn',
 
     // Prevent multiple component definition per file
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
-    'react/no-multi-comp': 1,
+    'react/no-multi-comp': ['error', { ignoreStateless: true }],
 
     // Prevent usage of setState
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-set-state.md
-    'react/no-set-state': 1,
+    'react/no-set-state': 'warn',
 
     // Prevent using string references
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md
@@ -176,7 +179,7 @@ module.exports = {
 
     // Prevent missing props validation in a React component definition
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-    'react/prop-types': ['error', { ignore: [], customValidators: [] }],
+    'react/prop-types': ['error', { ignore: [], customValidators: [], skipUndeclared: false }],
 
     // Prevent missing React when using JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
@@ -184,8 +187,8 @@ module.exports = {
 
     // Restrict file extensions that may be required
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-extension.md
-    // deprecated
-    // 'react/require-extension': [1, { 'extensions': ['.js', '.jsx', '.coffee', '.jsx.coffee'] }],
+    // deprecated in favor of import/extensions
+    'react/require-extension': ['off', { extensions: ['.jsx', '.js'] }],
 
     // Require render() methods to return something
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-render-return.md
@@ -205,13 +208,17 @@ module.exports = {
       order: [
         'static-methods',
         'lifecycle',
+        '/^on.+$/',
+        '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
         'everything-else',
+        '/^render.+$/',
         'render'
       ],
       groups: {
         lifecycle: [
           'mixins',
           'displayName',
+          'props',
           'propTypes',
           'paginationId',
           'scopesDef',
@@ -260,6 +267,10 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md
     'react/jsx-no-target-blank': 'error',
 
+    // only .jsx files may have JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
+    'react/jsx-filename-extension': ['off', { extensions: ['.jsx'] }],
+
     // prevent accidental JS comments from being injected into JSX as text
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md
     'react/jsx-no-comment-textnodes': 'error',
@@ -303,18 +314,48 @@ module.exports = {
 
     // Prevent passing of children as props
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-children-prop.md
-    'react/no-children-prop': 'error'
+    'react/no-children-prop': 'error',
+
+    // Validate whitespace in and around the JSX opening and closing brackets
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md
+    'react/jsx-tag-spacing': ['error', {
+      closingSlash: 'never',
+      beforeSelfClosing: 'always',
+      afterOpening: 'never'
+    }],
+
+    // Prevent usage of Array index in keys
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+    'react/no-array-index-key': 'warn',
+
+    // Enforce a defaultProps definition for every prop that is not a required prop
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
+    'react/require-default-props': 'warn',
+
+    'react/forbid-elements': ['off', {
+      forbid: [
+      ],
+    }],
+
+    // Forbids using non-exported propTypes
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-foreign-prop-types.md
+    'react/forbid-foreign-prop-types': 'off',
+
+    // Prevent void DOM elements from receiving children
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
+    // TODO: enable (semver-minor)
+    'react/void-dom-elements-no-children': 'off',
   },
 
   settings: {
     'import/resolver': {
-      'node': {
-        'extensions': ['.js', '.jsx', '.coffee', '.jsx.coffee', '.json']
+      node: {
+        extensions: ['.js', '.jsx', '.json']
       }
     },
-    'react': {
-      'pragma': 'React',
-      'version': '0.15'
+    react: {
+      pragma: 'React',
+      version: '0.15'
     },
   }
 };

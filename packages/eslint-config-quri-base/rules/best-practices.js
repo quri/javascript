@@ -43,7 +43,7 @@ module.exports = {
     'guard-for-in': 'error',
 
     // disallow the use of alert, confirm, and prompt
-    'no-alert': 2,
+    'no-alert': 'error',
 
     // disallow use of arguments.caller or arguments.callee
     'no-caller': 'error',
@@ -57,7 +57,7 @@ module.exports = {
     'no-div-regex': 'off',
 
     // disallow else after a return in an if
-    'no-else-return': 1,
+    'no-else-return': 'warn',
 
     // disallow empty functions, except for standalone funcs/arrows
     // http://eslint.org/docs/rules/no-empty-function
@@ -166,7 +166,19 @@ module.exports = {
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
     // rule: http://eslint.org/docs/rules/no-param-reassign.html
-    'no-param-reassign': ['error', { 'props': false }],
+    'no-param-reassign': ['warn', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'acc', // for reduce accumulators
+        'e', // for e.returnvalue
+        'ctx', // for Koa routing
+        'req', // for Express requests
+        'request', // for Express requests
+        'res', // for Express responses
+        'response', // for Express responses
+        '$scope', // for Angular 1 scopes
+      ]
+    }],
 
     // disallow usage of __proto__ property
     'no-proto': 'error',

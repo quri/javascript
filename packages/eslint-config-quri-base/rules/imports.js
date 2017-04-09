@@ -18,6 +18,7 @@ module.exports = {
     },
     'import/extensions': [
       '.js',
+      '.js.flow',
     ],
     'import/core-modules': [
     ],
@@ -65,6 +66,7 @@ module.exports = {
 
     // Forbid the use of extraneous packages
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+    // paths are treated both as absolute paths, and relative to process.cwd()
     'import/no-extraneous-dependencies': ['error', {
       devDependencies: true,
       optionalDependencies: false,
@@ -114,7 +116,6 @@ module.exports = {
     'import/extensions': ['error', 'always', {
       js: 'never',
       jsx: 'never',
-      coffee: 'never',
     }],
 
     // Enforce a convention in module import order
@@ -147,7 +148,7 @@ module.exports = {
 
     // Forbid require() calls with expressions
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    'import/no-dynamic-require': 'off',
+    'import/no-dynamic-require': 'error',
 
     // prevent importing the submodules of other modules
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-internal-modules.md
@@ -170,5 +171,9 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unassigned-import.md
     // importing for side effects is perfectly acceptable, if you need side effects.
     'import/no-unassigned-import': 'off',
+
+    // Prevent importing the default as if it were named
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-default.md
+    'import/no-named-default': 'error',
   },
 };

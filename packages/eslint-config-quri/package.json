@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-quri",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "Quri's ESLint config, following our styleguide",
   "main": "index.js",
   "scripts": {
@@ -34,25 +34,25 @@
   },
   "homepage": "https://github.com/quri/javascript",
   "dependencies": {
-    "eslint-config-quri-base": "^3.0.1"
+    "eslint-config-quri-base": "^4.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.0",
+    "babel-eslint": "^7.2.1",
     "babel-tape-runner": "^2.0.1",
-    "eslint": "^3.8.1",
+    "eslint": "^3.19.0",
     "eslint-find-rules": "^1.14.0",
-    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.6.0",
+    "eslint-plugin-react": "^6.10.3",
     "in-publish": "^2.0.0",
-    "react": ">= 0.13.0",
+    "react": ">= 0.15.0",
     "safe-publish-latest": "^1.1.1",
     "tape": "^4.6.2"
   },
   "peerDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-plugin-import": "^2.1.0",
-    "eslint-plugin-react": "^6.6.0"
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3"
   },
   "engines": {
     "node": ">= 4"

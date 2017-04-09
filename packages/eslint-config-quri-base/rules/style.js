@@ -140,7 +140,7 @@ module.exports = {
 
     // specify the maximum length of a line in your program
     // http://eslint.org/docs/rules/max-len
-    'max-len': [1, 100, 2, {
+    'max-len': ['warn', 100, 2, {
       ignoreUrls: true,
       ignoreComments: false,
       ignoreRegExpLiterals: true,
@@ -334,17 +334,14 @@ module.exports = {
     'operator-linebreak': 'off',
 
     // enforce padding within blocks
-    'padded-blocks': [1, 'never'],
+    'padded-blocks': ['error', 'never'],
 
     // require quotes around object literal property names
     // http://eslint.org/docs/rules/quote-props.html
     'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
 
     // specify whether double or single quotes should be used
-    quotes: [2, 'double', { avoidEscape: true }],
-
-    // require identifiers to match the provided regular expression
-    'id-match': 0,
+    quotes: ['error', 'double', { avoidEscape: true }],
 
     // do not require jsdoc
     // http://eslint.org/docs/rules/require-jsdoc

@@ -1,13 +1,28 @@
 module.exports = {
   rules: {
     // require trailing commas in multiline object literals
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': ['error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'only-multiline',
+    }],
+
+    // Disallow await inside of loops
+    // http://eslint.org/docs/rules/no-await-in-loop
+    'no-await-in-loop': 'error',
+
+    // Disallow comparisons to negative zero
+    // http://eslint.org/docs/rules/no-compare-neg-zero
+    // TODO: enable (semver-major)
+    'no-compare-neg-zero': 'off',
 
     // disallow assignment in conditional expressions
     'no-cond-assign': ['error', 'always'],
 
     // disallow use of console
-    'no-console': 2,
+    'no-console': 'warn',
 
     // disallow use of constant expressions in conditions
     'no-constant-condition': 'warn',

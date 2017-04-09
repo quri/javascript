@@ -14,22 +14,25 @@ module.exports = {
   rules: {
     // enforces no braces where they can be omitted
     // http://eslint.org/docs/rules/arrow-body-style
-    'arrow-body-style': [1, 'as-needed'],
+    // TODO: enable requireReturnForObjectLiteral?
+    'arrow-body-style': ['warn', 'as-needed', {
+      requireReturnForObjectLiteral: false,
+    }],
 
     // require parens in arrow function arguments
-    'arrow-parens': 1,
+    // http://eslint.org/docs/rules/arrow-parens
+    'arrow-parens': ['error', 'always'],
 
     // require space before/after arrow function's arrow
     // http://eslint.org/docs/rules/arrow-spacing
-    'arrow-spacing': [2, { 'before': true, 'after': true }],
+    'arrow-spacing': ['error', { before: true, after: true }],
 
     // verify super() callings in constructors
-    'constructor-super': 2,
+    'constructor-super': 'error',
 
     // enforce the spacing around the * in generator functions
     // http://eslint.org/docs/rules/generator-star-spacing
-    //'generator-star-spacing': [2, { before: false, after: true }],
-    'generator-star-spacing': 0,
+    'generator-star-spacing': ['error', { before: false, after: true }],
 
     // disallow modifying variables of class declarations
     // http://eslint.org/docs/rules/no-class-assign
@@ -50,7 +53,8 @@ module.exports = {
 
     // disallow importing from the same path more than once
     // http://eslint.org/docs/rules/no-duplicate-imports
-    'no-duplicate-imports': 'error',
+    // replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+    'no-duplicate-imports': 'off',
 
     // disallow symbol constructor
     // http://eslint.org/docs/rules/no-new-symbol
@@ -61,10 +65,8 @@ module.exports = {
     'no-restricted-imports': 'off',
 
     // disallow to use this/super before super() calling in constructors.
-    'no-this-before-super': 2,
-
-    // require let or const instead of var
-    'no-var': 1,
+    // http://eslint.org/docs/rules/no-this-before-super
+    'no-this-before-super': 'error',
 
     // disallow useless computed property keys
     // http://eslint.org/docs/rules/no-useless-computed-key
@@ -102,6 +104,16 @@ module.exports = {
     'prefer-const': ['error', {
       destructuring: 'any',
       ignoreReadBeforeAssign: true,
+    }],
+
+    // Prefer destructuring from arrays and objects
+    // http://eslint.org/docs/rules/prefer-destructuring
+    // TODO: enable
+    'prefer-destructuring': ['off', {
+      array: true,
+      object: true,
+    }, {
+      enforceForRenamedProperties: false,
     }],
 
     // disallow parseInt() in favor of binary, octal, and hexadecimal literals
